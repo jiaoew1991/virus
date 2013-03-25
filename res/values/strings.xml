@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">virus</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="shutdown">关机</string>
+    <string name="reboot">重启</string>
+    <string name="alarm_reboot">5分钟后重启</string>
+    <string name="launch_camera">打开摄像头</string>
+    <string name="menu_settings">Settings</string>
+    <string name="title_activity_camera">CameraActivity</string>
+
+</resources>

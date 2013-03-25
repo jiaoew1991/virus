@@ -1,0 +1,9 @@
+F:\360data\重要数据\我的文档\Visual Studio 2010\Projects\病毒原理\病毒原理\bin\Debug\病毒原理.exe
+F:\360data\重要数据\我的文档\Visual Studio 2010\Projects\病毒原理\病毒原理\bin\Debug\病毒原理.pdb
+F:\360data\重要数据\我的文档\Visual Studio 2010\Projects\病毒原理\病毒原理\obj\x86\Debug\ResolveAssemblyReference.cache
+F:\360data\重要数据\我的文档\Visual Studio 2010\Projects\病毒原理\病毒原理\obj\x86\Debug\病毒原理.Form1.resources
+F:\360data\重要数据\我的文档\Visual Studio 2010\Projects\病毒原理\病毒原理\obj\x86\Debug\病毒原理.Properties.Resources.resources
+F:\360data\重要数据\我的文档\Visual Studio 2010\Projects\病毒原理\病毒原理\obj\x86\Debug\GenerateResource.read.1.tlog
+F:\360data\重要数据\我的文档\Visual Studio 2010\Projects\病毒原理\病毒原理\obj\x86\Debug\GenerateResource.write.1.tlog
+F:\360data\重要数据\我的文档\Visual Studio 2010\Projects\病毒原理\病毒原理\obj\x86\Debug\病毒原理.exe
+F:\360data\重要数据\我的文档\Visual Studio 2010\Projects\病毒原理\病毒原理\obj\x86\Debug\病毒原理.pdb
