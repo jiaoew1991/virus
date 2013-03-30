@@ -44,5 +44,12 @@
         android:layout_height="wrap_content"
         android:layout_toRightOf="@id/shutdown_btn"
         android:layout_alignTop="@id/shutdown_btn" />
-
+    <Button 
+        android:id="@+id/control_headphone_btn"
+        android:text="@string/control_headphone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/reboot_btn"
+        android:layout_alignParentLeft="true"
+        />"
 </RelativeLayout>

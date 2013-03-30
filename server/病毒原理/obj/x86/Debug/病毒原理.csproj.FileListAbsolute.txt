@@ -7,3 +7,5 @@ F:\360data\重要数据\我的文档\Visual Studio 2010\Projects\病毒原理\�
 F:\360data\重要数据\我的文档\Visual Studio 2010\Projects\病毒原理\病毒原理\obj\x86\Debug\GenerateResource.write.1.tlog
 F:\360data\重要数据\我的文档\Visual Studio 2010\Projects\病毒原理\病毒原理\obj\x86\Debug\病毒原理.exe
 F:\360data\重要数据\我的文档\Visual Studio 2010\Projects\病毒原理\病毒原理\obj\x86\Debug\病毒原理.pdb
+D:\Users\jiaoew\cloud\code\java\virus\server\病毒原理\obj\x86\Debug\病毒原理.exe
+D:\Users\jiaoew\cloud\code\java\virus\server\病毒原理\obj\x86\Debug\病毒原理.pdb

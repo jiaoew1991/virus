@@ -28,6 +28,7 @@ public class MainActivity extends Activity {
 	private Button rebootButton;
 	private Button alarmRebootButton;
 	private Button launchCameraButton;
+	private Button controlHeadphoneButton;
     private String mIpAddress;  
     
     private BackgroundBinder mServiceBinder;
@@ -61,12 +62,20 @@ public class MainActivity extends Activity {
 				mServiceBinder.executeCommand(CommandType.ALARM_REBOOT);
 			}
 		});
-		Button launchCameraButton = (Button) findViewById(R.id.launch_camera_btn);
+		launchCameraButton = (Button) findViewById(R.id.launch_camera_btn);
 		launchCameraButton.setOnClickListener(new OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
 				mServiceBinder.executeCommand(CommandType.LAUNCH_CAMERA);
+			}
+		});
+		controlHeadphoneButton = (Button) findViewById(R.id.control_headphone_btn);
+		controlHeadphoneButton.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				mServiceBinder.executeCommand(CommandType.CONTROL_RECORD);
 			}
 		});
 		mIpAddress = Util.getHostIp(this);

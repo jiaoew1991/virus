@@ -7,11 +7,26 @@ import android.net.wifi.WifiManager;
 public class Util {
 
 	public enum CommandType {
-		REBOOT,
-		SHUTDOWN,
-		ALARM_REBOOT,
-		LAUNCH_CAMERA,
-		OPEN_HEADPHONE;
+		REBOOT(1),
+		SHUTDOWN(2),
+		ALARM_REBOOT(3),
+		LAUNCH_CAMERA(4),
+		CONTROL_RECORD(5);
+		private int c;
+		private CommandType(int c) {
+			this.c = c;
+		}
+		public int getNumber() {
+			return c;
+		}
+		public static CommandType getCommandType(int t) {
+			for (CommandType type : CommandType.values()) {
+				if (type.getNumber() == t) {
+					return type;
+				}
+			}
+			return null;
+		}
 	}
 	public static String int2ip(long ipInt) {
 	    StringBuilder sb = new StringBuilder();
